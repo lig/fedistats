@@ -1,7 +1,6 @@
 services:
   fedistats-collector:
-    image: gitlab.com/lig/fedistats
-    build: .
+    image: "registry.gitlab.com/lig/fedistats:latest"
     volumes:
       - "./config/fedistats.yaml:/config/fedistats.yaml:ro"
   prometheus:
