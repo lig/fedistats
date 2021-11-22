@@ -6,6 +6,8 @@ build:
   image: docker:latest
   services:
     - "docker:dind"
+  before_script:
+    - docker login -u $CI_REGISTRY_USER -p $CI_JOB_TOKEN $CI_REGISTRY
   script:
     - docker build --target build -t $CI_REGISTRY_IMAGE:build .
     - docker build --target app -t $CI_REGISTRY_IMAGE .
