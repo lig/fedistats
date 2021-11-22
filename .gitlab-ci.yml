@@ -1,0 +1,15 @@
+stages:
+  - "build"
+
+build:
+  stage: build
+  image: docker:latest
+  services:
+    - "docker:dind"
+  script:
+    - docker build --target build -t $CI_REGISTRY_IMAGE:build .
+    - docker build --target app -t $CI_REGISTRY_IMAGE .
+    - docker push $CI_REGISTRY_IMAGE:build
+    - docker push $CI_REGISTRY_IMAGE
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
