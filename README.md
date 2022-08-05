@@ -49,3 +49,4 @@ Point your Prometheus instance to `http://your-host.tld:<configured port><config
 ## License
 
 [GNU Affero General Public License v3.0](./LICENSE)
+
